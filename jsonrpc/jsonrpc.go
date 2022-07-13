@@ -56,7 +56,8 @@ type RPCError struct {
 	Cause struct {
 		Name string `json:"name"`
 		Info struct {
-			ErrorMessage string `json:"error_message"`
+			ErrorMessage string `json:"error_message,omitempty"`
+			BlockReference interface{} `json:"block_reference,omitempty"`
 		} `json:"info"`
 	} `json:"cause,omitempty"`
 	Code    int         `json:"code"`
