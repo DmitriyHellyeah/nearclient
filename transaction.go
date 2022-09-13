@@ -33,7 +33,7 @@ func (c *Client) TransactionDetails(ctx context.Context, hash, sender string) (r
 	return
 }
 
-func (c *Client) TransactionDetailsWithReceipt(ctx context.Context, hash, sender string) (resp types.Receipt, err error) {
+func (c *Client) TransactionDetailsWithReceipt(ctx context.Context, hash, sender string) (resp types.TransactionStatus, err error) {
 	err = c.RPCClient.CallWithDecode("EXPERIMENTAL_tx_status", []string{hash, sender}, &resp)
 
 	if err != nil {

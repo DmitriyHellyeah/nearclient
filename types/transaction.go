@@ -8,6 +8,7 @@ type TransactionStatus struct {
 	Transaction        Transaction        `json:"transaction"`
 	TransactionOutcome TransactionOutcome `json:"transaction_outcome"`
 	ReceiptsOutcome    []ReceiptsOutcome  `json:"receipts_outcome"`
+	Receipts []Receipt `json:"receipts,omitempty"`
 }
 
 type TransactionStatusFailure struct {
