@@ -10,7 +10,7 @@ func (c *Client) ViewAccount(ctx context.Context, accountId string) (resp types.
 	params := map[string]interface{}{
 		"request_type": "view_account",
 		"finality": "final",
-		"account_id": []string{accountId},
+		"account_id": accountId,
 	}
 	err = c.RPCClient.CallWithDecode("query", params, &resp)
 

@@ -1,5 +1,9 @@
 package types
 
+const (
+	EmptyTxRoot = "11111111111111111111111111111111"
+)
+
 type TransactionStatus struct {
 	Status struct {
 		SuccessValue             string `json:"SuccessValue,omitempty"`
