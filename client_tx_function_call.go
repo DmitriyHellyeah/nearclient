@@ -97,6 +97,5 @@ func (a *Client) SendCallFunctionTx(ctx context.Context,methodName string, args 
 	}
 	encoded_bs64 := base64.StdEncoding.EncodeToString(data)
 
-    fmt.Println(encoded_bs64)
 	return a.SendAwaitTransaction(ctx, encoded_bs64)
 }
