@@ -1,5 +1,10 @@
 package types
 
+import (
+	"encoding/base64"
+	"encoding/json"
+)
+
 const (
 	EmptyTxRoot = "11111111111111111111111111111111"
 )
@@ -32,6 +37,19 @@ type FunctionCall struct {
 	Deposit    string `json:"deposit"`
 	Gas        int64  `json:"gas"`
 	MethodName string `json:"method_name"`
+}
+
+func (FunctionCall *FunctionCall) DecodeArgs(to interface{}) error {
+	rawArgs, err := base64.StdEncoding.DecodeString(FunctionCall.Args)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(rawArgs, to)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 type Transaction struct {
