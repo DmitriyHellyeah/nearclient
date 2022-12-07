@@ -51,6 +51,8 @@ type Validators struct {
 		Shards            []int  `json:"shards"`
 		NumProducedBlocks int    `json:"num_produced_blocks"`
 		NumExpectedBlocks int    `json:"num_expected_blocks"`
+		NumExpectedChunks int    `json:"num_expected_chunks"`
+		NumProducedChunks int    `json:"num_produced_chunks"`
 	} `json:"current_validators"`
 	NextValidators []struct {
 		AccountId string `json:"account_id"`
@@ -72,8 +74,21 @@ type Validators struct {
 		AccountId string `json:"account_id"`
 		PublicKey string `json:"public_key"`
 		Stake     string `json:"stake"`
+		ValidatorStakeStructVersion string `json:"validator_stake_struct_version"`
 	} `json:"current_proposals"`
-	PrevEpochKickout []interface{} `json:"prev_epoch_kickout"`
+	PrevEpochKickout []struct {
+		AccountId string `json:"account_id"`
+		Reason    struct {
+			NotEnoughBlocks struct {
+				Expected int `json:"expected"`
+				Produced int `json:"produced"`
+			} `json:"NotEnoughBlocks,omitempty"`
+			NotEnoughChunks struct {
+				Expected int `json:"expected"`
+				Produced int `json:"produced"`
+			} `json:"NotEnoughChunks,omitempty"`
+		} `json:"reason"`
+	} `json:"prev_epoch_kickout"`
 	EpochStartHeight int           `json:"epoch_start_height"`
 	EpochHeight      int           `json:"epoch_height"`
 }
