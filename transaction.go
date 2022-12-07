@@ -52,7 +52,7 @@ func (c *Client) TransactionStatus(ctx context.Context, hash, sender string) (st
 
 	var Failure types.TransactionStatusFailure
 
-	if response.Status.TransactionStatusFailure != Failure {
+	if *response.Status.TransactionStatusFailure != Failure {
 		txmsg = response.Status.TransactionStatusFailure.ActionError.Kind.FunctionCallError.ExecutionError
 		status = "failed"
 		return

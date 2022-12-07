@@ -1,16 +1,17 @@
 package types
 
 type ViewAccessKey struct {
-	Nonce      int `json:"nonce"`
-	Permission struct {
-		FunctionCall struct {
-			Allowance   string   `json:"allowance"`
-			ReceiverId  string   `json:"receiver_id"`
-			MethodNames []string `json:"method_names"`
-		} `json:"FunctionCall"`
-	} `json:"permission"`
-	BlockHeight int    `json:"block_height"`
-	BlockHash   string `json:"block_hash"`
+	Nonce int `json:"nonce"`
+	// Permission struct {
+	// 	FunctionCall struct {
+	// 		Allowance   string   `json:"allowance"`
+	// 		ReceiverId  string   `json:"receiver_id"`
+	// 		MethodNames []string `json:"method_names"`
+	// 	} `json:"FunctionCall"`
+	// } `json:"permission"`
+	Permission  Permission `json:"permission"`
+	BlockHeight int        `json:"block_height"`
+	BlockHash   string     `json:"block_hash"`
 }
 
 type ViewAccessKeyList struct {

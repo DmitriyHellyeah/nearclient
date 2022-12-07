@@ -6,13 +6,13 @@ const (
 
 type TransactionStatus struct {
 	Status struct {
-		SuccessValue             string `json:"SuccessValue,omitempty"`
-		TransactionStatusFailure `json:"Failure,omitempty"`
+		SuccessValue             *string `json:"SuccessValue,omitempty"`
+		TransactionStatusFailure *TransactionStatusFailure `json:"Failure,omitempty"`
 	} `json:"status"`
 	Transaction        Transaction        `json:"transaction"`
 	TransactionOutcome TransactionOutcome `json:"transaction_outcome"`
 	ReceiptsOutcome    []ReceiptsOutcome  `json:"receipts_outcome"`
-	Receipts []Receipt `json:"receipts,omitempty"`
+	Receipts           []Receipt          `json:"receipts,omitempty"`
 }
 
 type TransactionStatusFailure struct {
