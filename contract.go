@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/DmitriyHellyeah/nearclient/types"
 )
@@ -67,6 +68,14 @@ func (c *Client) ViewContractCodeChanges(ctx context.Context, accountIds []strin
 }
 
 func (c *Client) CallContractFunction(ctx context.Context, accountId, contractMethod string, args interface{}) (resp types.CallContractFunction, err error) {
+	if len(accountId) == 0 {
+		err = errors.New("accountId can't be empty")
+		return
+	}
+	if len(contractMethod) == 0 {
+		err = errors.New("contractMethod can't be empty")
+		return
+	}
 	b, err := json.Marshal(args)
 
 	if err != nil {
